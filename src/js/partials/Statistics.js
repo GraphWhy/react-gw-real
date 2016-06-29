@@ -8,7 +8,7 @@ export default class TodoAppDashboard extends Component {
     let getTotal = index => {
       return this.props.questions[index].answers
       .reduce((_total,answer) => answer.votes + _total, 0); 
-    }
+    };
     let _items = this.props.questions[_current].answers.map((answer, index) => {
       return  {"label": answer.title, "value": parseInt(answer.votes/getTotal(_current)*100), 
       "colorIndex": "graph-1"};

@@ -117,19 +117,19 @@ class Main extends Component {
   }
   
   routeHandler ( route ) {
-    switch( this.state.currentPage ){
+    switch( this.state.currentPage ) {
       case 'menu':
-        return <Menu changePage={this.changePage} />
-      break;
+        return <Menu changePage={this.changePage} />;
+        break;
       case 'statistics':
         return <Statistics currentTag={this.state.currentTag} questions={this.state.questions} currentQuestion={this.state.currentQuestion} />;
-      break;
+        break;
       case 'questions':
         return <Questions currentTag={this.state.currentTag} questions={this.state.questions} currentQuestion={this.state.currentQuestion} changeQuestion={this.changeQuestion} />;
-      break;
+        break;
       case 'landing':
         return <Landing changePage={this.changePage} />;
-      break;
+        break;
       default:
         return <Landing changePage={this.changePage} />;
     }
