@@ -8,15 +8,18 @@ import Header from 'grommet/components/Header';
 import Anchor from 'grommet/components/Anchor';
 
 
-export default class TodoAppDashboard extends Component {
+export default class Questions extends Component {
   render () {
     let items = this.props.questions[this.props.currentQuestion].answers.map((answer, index) => {
       return (
-        <Button key={index} accent={true} margin="large" label={answer.title} onClick={this.props.changeQuestion}/>
+        <Button key={index}  margin="large" label={answer.title} onClick={this.props.changeQuestion}/>
       );
     });
     return (
-      <Box appCentered={true} colorIndex="light-1" >
+      
+      <Box appCentered={true}
+           colorIndex="light-1"
+           className="question">
       <Header justify="between">
         <Title>
           {this.props.currentQuestion+1} / {this.props.questions.length}
@@ -28,13 +31,13 @@ export default class TodoAppDashboard extends Component {
         </Menu>
       </Header>
         <Heading tag="h2" align="center" margin="large">
-          {this.props.questions[this.props.currentQuestion].prompt}
+          <strong>{this.props.questions[this.props.currentQuestion].prompt}</strong>
         </Heading>
         <Menu size="large" inline={true} align="center" pad={{"horizontal": "medium", "vertical": "medium", "between": "medium"}}>
-          { items }
+          {items}
         </Menu>
       </Box>
     );
   }
-};
+}
 

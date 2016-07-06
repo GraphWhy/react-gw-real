@@ -2,3 +2,120 @@
 //@import '~grommet/scss/hpe/index';
 
 @import '~grommet/scss/vanilla/index';
+
+//UTILITY
+.center{
+    margin:0 auto;
+}
+.button-center{
+    text-align:center;
+}
+.no-bottom-padding{
+    padding-bottom:0px;
+}
+
+/* HALT FOOTER DEVELOPMENT 
+// FOOTER - PREP
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+    min-height:100vh;
+}
+// FOOTER - SCSS
+App-footer{
+    border-top:1px solid #999;
+}
+---------------------------- */
+
+//GROMMET MODIFICATIONS
+.background-color-index-neutral-6 {
+    background-color:#f5f5f5;
+}
+div.background-color-index-neutral-6 {
+    border:1px solid #333;
+    div {
+        color:#333;
+    }
+    .brick__label span{
+        color:#333;
+    }
+}
+header.background-color-index-neutral-6{
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+    div {
+        color:#333;
+    }
+}
+
+//QUESTION MODIFICATIONS
+.box.question{
+    margin:20px auto;
+    max-width:570px;
+    border:1px solid black;
+    padding:20px;
+    background-color:#fcfcfc;
+}
+.button.button--accent{
+    width:100%;
+    background-color:#fefefe;
+}
+@media screen and (max-width: 600px) {
+    .box.question{
+        padding:0px;
+        border:none;
+    }
+}
+
+// STATISTICS CSS
+div.pin-wrapper {
+	display: -ms-flexbox;
+	-ms-flex-direction: column;
+	-ms-flex-wrap: wrap;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100vw;
+	font-size: 0; 
+}
+div.pin-wrapper .pin-box { 
+	width: 33.3%;
+}
+
+/*
+.pin-wrapper {
+    display: -ms-flexbox;
+	-ms-flex-direction: column;
+	-ms-flex-wrap: wrap;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100vw;
+	font-size: 0; 
+    /*
+  padding: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead  */
+  
+  /*
+  justify-content: flex-start;
+  align-items: flex-start;
+  */
+  /*
+
+}
+.pin-box {
+  background-color: #f5f5f5;
+  border:1px solid #333;
+  height: 100%;
+  width: 250px;
+  margin: 1%;
+  padding: 10px;
+}
+*/

@@ -4,91 +4,46 @@ import ReactDOM from 'react-dom';
 import App from 'grommet/components/App';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
+import Anchor from 'grommet/components/Anchor';
 import Menu from './partials/Menu';
 import Questions from './partials/Questions';
 import Statistics from './partials/Statistics';
 import Landing from './partials/Landing';
 import Rest from 'grommet/utils/Rest';
 
-
 class Main extends Component {
   constructor () {
     super();
     this.state = {
       currentPage: 'landing',
-      currentTag: 'Smart City',
-      questions: 
-      [
-        {
-          prompt: 'How green is a tree?',
-          answers: [
-            {
-              title: 'Somewhat green',
-              votes: 2
-            },
-            {
-              title: 'Very green',
-              votes: 5
-            },
-            {
-              title: 'Not green',
-              votes: 7
-            },
-            {
-              title: 'trees are brown',
-              votes: 1
-            }
-          ]
-        },
-        {
-          prompt: 'Is trump a viable candidate',
-          answers: [
-            {
-              title: 'Yes',
-              votes: 1
-            },
-            {
-              title: 'No',
-              votes: 1
-            },
-            {
-              title: 'Better than Hillary',
-              votes: 4
-            },
-            {
-              title: 'Fuck Trump',
-              votes: 8
-            }
-          ]
-        },
-        {
-          prompt: 'How green is a apple?',
-          answers: [
-            {
-              title: 'Somewhat blue',
-              votes: 1
-            },
-            {
-              title: 'Very red',
-              votes: 2
-            },
-            {
-              title: 'Not orange',
-              votes: 3
-            },
-            {
-              title: 'oranges are orange',
-              votes: 5
-            }
-          ]
-        }
-      ],
+      currentTag: '',
+      questions: [],
       currentQuestion: 0
     };
     this.changePage = this.changePage.bind(this);
     this.changeQuestion = this.changeQuestion.bind(this);
     this.resetVote = this.resetVote.bind(this);
-    Rest.get('http://echo.jsontest.com/insert-key-here/insert-value-here/key/value').then(result => console.log(result));
+    Rest.get('http://107.170.248.208:3010/api/tag/questions/575cdcde681681f04d9bd9e0').then(result => {
+      let arr = [];
+      let questions = result.body.questions;
+      for(let i = 0; i < questions.length; i++) {
+        var answers = [];
+        for(let v = 0; v < questions[i].answers.length; v++) {
+          answers.push({
+            title:questions[i].answers[v].title,
+            votes:questions[i].answers[v].votes
+          });
+        }
+        arr.push({
+          prompt:questions[i].prompt,
+          answers:answers
+        });
+      }
+      let currentstate = result.body.tag;
+
+      this.setState({questions:arr});
+      this.setState({currentTag:currentstate});
+    });
   }
   
   changePage ( route ) {
@@ -117,7 +72,7 @@ class Main extends Component {
   }
   
   routeHandler ( route ) {
-    switch( this.state.currentPage ) {
+    switch ( this.state.currentPage ) {
       case 'menu':
         return <Menu changePage={this.changePage} />;
         break;
@@ -136,12 +91,19 @@ class Main extends Component {
   }
   
   render () {
+    let createHeader = function(){
+      return <Header justify="between" colorIndex="neutral-6" pad={{"horizontal": "medium"}}>
+              <Title onClick={() => this.changePage('menu')}>GraphWhy</Title>
+            </Header>;
+    }.bind(this)
     return (
       <App centered={false} >
-        { this.state.currentPage != 'landing' ? <Header justify="between" colorIndex="neutral-1" pad={{"horizontal": "medium"}}>
-          <Title onClick={ () => this.changePage('menu') }>GraphWhy</Title>
-          </Header> : null }
-        { this.routeHandler() }
+        {this.state.currentPage != 'landing' ? createHeader(): null}
+
+          <main>
+            {this.routeHandler()}
+          </main>
+          
       </App>
     );
   }

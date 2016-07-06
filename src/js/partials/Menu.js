@@ -10,10 +10,14 @@ export default class Menu extends Component {
     return (
       <Section primary={true} inline={false}>
         <Bricks>
-          <Brick label="Smart City" colorIndex="neutral-2" onClick={() => this.props.changePage('questions')}/>
-          <Brick label="CCP(coming soon)" colorIndex="neutral-1" />
-          <Brick label="Students of Bernie Sanders(coming soon)" colorIndex="neutral-1" />
-          <Brick label="Green Peace(coming soon)" colorIndex="neutral-1" />
+          <Brick label="Smart City" 
+                 colorIndex="neutral-2"
+                 texture="http://static.nextbigwhat.com/wp-content/uploads/2015/01/smartcity.jpg"
+                 onClick={() => this.props.changePage('questions')}
+          />
+          <Brick label="CCP(coming soon)" colorIndex="neutral-6" />
+          <Brick label="Students of Bernie Sanders(coming soon)" colorIndex="neutral-6" />
+          <Brick label="Green Peace(coming soon)" colorIndex="neutral-6" />
         </Bricks>
       </Section>
     );
