@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-
 import Chart from 'grommet/components/Chart';
 
 export default class chartThomas extends Component {
   render () {
     return (
+      <div>
+      
       <Chart type="bar" max={100} threshold={0} xAxis={[
         {"label": "Approachability", "value": 8},
         {"label": "Cleanliness", "value": 7},
@@ -26,6 +27,9 @@ export default class chartThomas extends Component {
           "colorIndex": "graph-2"
         }
       ]} legend={{"position": "after"}} a11yTitleId="tileChart2Title" a11yDescId="tileChart2Desc" />
+      
+      
+    </div>
     );
   }
 };
