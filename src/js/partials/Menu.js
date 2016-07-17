@@ -15,17 +15,19 @@ export default class Menu extends Component {
     return (
       <Section primary={true} inline={false}>
         <Bricks>
-          <Brick label="Smart City" 
+          <Brick label="Smart City"
                  colorIndex="neutral-2"
                  texture="http://static.nextbigwhat.com/wp-content/uploads/2015/01/smartcity.jpg"
                  onClick={() => this.props.changePage('questions')}
+                 type="wide"
           />
-          <Brick label="CCP(coming soon)" 
-                 colorIndex="neutral-6" 
+          <Brick label="CCP(coming soon)"
+                 colorIndex="neutral-6"
                  onClick={() => this.props.changePage('bquestions')}
+                 type="wide"
           />
-          <Brick label="Students of Bernie Sanders(coming soon)" colorIndex="neutral-6" />
-          <Brick label="Green Peace(coming soon)" colorIndex="neutral-6" />
+          <Brick label="Students of Bernie Sanders(coming soon)" colorIndex="neutral-6" type="wide"/>
+          <Brick label="Green Peace(coming soon)" colorIndex="neutral-6" type="wide"/>
         </Bricks>
       </Section>
     );
